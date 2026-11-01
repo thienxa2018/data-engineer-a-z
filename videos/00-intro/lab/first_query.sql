@@ -5,7 +5,7 @@ SELECT
     (ts AT TIME ZONE 'Asia/Ho_Chi_Minh')::date AS business_date,
     count(*)                                   AS transactions,
     -- TODO: thêm tổng doanh thu (cột total_amount_vnd), đặt tên revenue_vnd
-    NULL::bigint                               AS revenue_vnd
+    sum(total_amount_vnd)                               AS revenue_vnd
 FROM pos_transactions
 GROUP BY 1
 ORDER BY 1;
